@@ -1,0 +1,17 @@
+.Loader {
+  width: 80px;
+  height: 80px;
+  align-self: center;
+  animation-name: load;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  animation-timing-function: ease-in;
+}
+
+@keyframes load {
+  from{}
+  to {
+    transform: rotate(360deg);
+  }
+}

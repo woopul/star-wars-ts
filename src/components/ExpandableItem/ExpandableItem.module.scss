@@ -1,0 +1,41 @@
+@import "../../styles/base";
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+	.item {
+		line-height: 1.7rem;
+		padding: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		color: $color-primary;
+		background: #fff;
+		border-radius: 5px;
+
+		&__text {
+			font-weight: 700;
+		}
+
+		&.expanded {
+			box-shadow: 0px 1px 9px 1px #0000001a;
+			z-index: 1;
+		}
+	}
+
+	.expandedField {
+		display: none;
+		height: 200px;
+		width: 100%;
+		background: #fff;
+		transition: display 2s;
+		&.expanded {
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+      overflow: hidden;
+		}
+	}
+}
