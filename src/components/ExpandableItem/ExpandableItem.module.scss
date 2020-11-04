@@ -27,14 +27,13 @@
 
 	.expandedField {
 		display: none;
-		height: 200px;
+		min-height: 200px;
 		width: 100%;
 		background: #fff;
 		transition: display 2s;
 		&.expanded {
       display: flex;
       justify-content: center;
-      // align-items: center;
       overflow: hidden;
 		}
 	}

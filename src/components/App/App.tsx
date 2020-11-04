@@ -1,9 +1,10 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Header/Header";
 import MovieList from "../MovieList/MovieList";
 import Divider from '../Divider/Divider';
-import "./app.scss";
 import AddMovie from "../AddMovie/AddMovie";
+
+import "./app.scss";
 
 const App = () => {
   return (
