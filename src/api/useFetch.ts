@@ -22,7 +22,6 @@ export const useFetchMovies = () => {
       try {
         starWarsApi.get('/films')
           .then(res => {
-            console.log('ISIDE RES AXIOS', res)
             const moviesQuery = res.data.results.map(movie => ({
               title: movie.title,
               planets: movie.planets
@@ -35,6 +34,5 @@ export const useFetchMovies = () => {
         setError(err.message)
       }
   }, [])
-  console.log(isLoading, movies, error)
   return { isLoading, movies, error }
 }
