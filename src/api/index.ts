@@ -2,17 +2,17 @@ import { IMovie, IMoviesQuery } from './api.types';
 const API_ROOT = "https://swapi.dev/api/";
 
 async function fetchMovies() {
-   return fetch(
-      `${API_ROOT}films`,
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    );
+  return fetch(
+    `${API_ROOT}films`,
+    {
+      method: "GET",
+      mode: "cors",
+    }
+  );
 }
 
 export async function fetchStarwarsFilms(): Promise<IMoviesQuery> {
-  const result : IMoviesQuery = {
+  const result: IMoviesQuery = {
     movies: [],
     error: null,
   };
@@ -27,7 +27,6 @@ export async function fetchStarwarsFilms(): Promise<IMoviesQuery> {
     );
 
     await response.json().then((movies) => {
-      console.log(movies.results);
       result.movies = movies.results.map((movieItem) => ({
         title: movieItem.title,
         planets: movieItem.planets,
