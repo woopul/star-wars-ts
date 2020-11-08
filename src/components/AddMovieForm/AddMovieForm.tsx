@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styles from './AddMovieForm.module.scss';
+import _ from 'lodash';
 import PlanetItem from "../PlanetItem/PlanetItem";
+import { IPlanets, pickData } from "../../api/api.types";
+import { dispatch } from "../../store/store";
+import { postMovie, UpdatePlanetStore } from "../../store/movies/movies.actions";
 
 interface IFormData {
 	movieTitle: string,
@@ -13,13 +17,17 @@ interface IFormControl {
 	addPlanet?: string | boolean
 }
 
+interface ISelectedPlanets {
+	planetData: IPlanets[]
+}
+
 const AddMovieForm = () => {
 	const [formData, setFormData] = useState<IFormData>({
 		movieTitle: "",
 		addPlanet: ""
 	});
 	const [autocompleteFetch, setAutocompleteFetch] = useState([]);
-	const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
+	const [selectedPlanets, setSelectedPlanets] = useState<IPlanets[]>([]);
 	const [errors, setErrors] = useState<IFormControl>({});
 	const [touched, setTouched] = useState<IFormControl>({});
 
@@ -36,10 +44,6 @@ const AddMovieForm = () => {
 			nextErrors.movieTitle = "Movie title name must start with a capital letter."
 		}
 
-		// if (!values.addPlanet) {
-		// 	nextErrors.addPlanet = "Field is required";
-		// }
-
 		setErrors(nextErrors);
 	};
 
@@ -55,7 +59,6 @@ const AddMovieForm = () => {
 	}
 
 	const handleBlur = ({ target: { value, name } }) => {
-		// setAutocompleteFetch([]);
 		if (!touched[name]) {
 			setTouched({ ...touched, [name]: true });
 		}
@@ -78,6 +81,9 @@ const AddMovieForm = () => {
 		});
 	};
 
+	const addCustomMovie = () => {
+	}
+	
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (selectedPlanets.length === 0) {
@@ -85,16 +91,19 @@ const AddMovieForm = () => {
 			return
 		}
 		clearForm();
+		dispatch()(postMovie({title: formData.movieTitle, planetsUrl: selectedPlanets.map(p => p.url)}))
+		dispatch()(UpdatePlanetStore([]))
+		
 	};
 
-	const handleSelectPlanet = (name) => {
+	const handleSelectPlanet = (res) => {
 		setAutocompleteFetch([])
-		if (selectedPlanets.includes(name)) return;
-		setSelectedPlanets([...selectedPlanets, name]);
+		if (_.some(selectedPlanets, {name: res.name})) return;
+		setSelectedPlanets([...selectedPlanets,  _.pick(res, pickData)]);
 	}
 
 	const handleRemovePlanet = name => {
-		setSelectedPlanets(selectedPlanets.filter(planet => planet !== name))
+		setSelectedPlanets(selectedPlanets.filter(planet => planet.name !== name));
 	}
 
 	return (
@@ -116,7 +125,7 @@ const AddMovieForm = () => {
 				</div>
 
 				<div className={styles.InputField}>
-					{selectedPlanets.length > 0 && <div className={styles.selectedPlanets}>{selectedPlanets.map(name => <PlanetItem name={name} handleRemove={handleRemovePlanet} />)}</div>}
+					{selectedPlanets.length > 0 && <div className={styles.selectedPlanets}>{selectedPlanets.map(planet => <PlanetItem name={planet.name} handleRemove={handleRemovePlanet} />)}</div>}
 					<label htmlFor="addPlanet">Add Planet
 					<input
 							autoComplete="off"
@@ -131,7 +140,7 @@ const AddMovieForm = () => {
 						/>
 						{autocompleteFetch.length > 0 &&
 							<div className={styles.hints}>
-								{autocompleteFetch.map(res => <p onClick={() => handleSelectPlanet(res.name)}>{res.name}</p>)}
+								{autocompleteFetch.map(res => res.name === 'unknown'? null :  <p onClick={() => handleSelectPlanet(res)}>{res.name}</p>)}
 							</div>}
 					</label>
 					{errors["addPlanet"] && (<p className={styles.errorMsg}>{errors["addPlanet"]}</p>)}

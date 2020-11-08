@@ -5,10 +5,11 @@ export interface IMoviesQuery {
 
 export interface IMovie {
   title: string;
-  planets: string[];
+  planetsUrl: string[];
 }
 
 export interface IPlanets {
+  url:string;
   name: string,
   rotation_period: string,
   orbital_period: string,
@@ -20,6 +21,14 @@ export interface IPlanets {
   population: string,
 }
 
-export interface IStoredPlannets {
-  [key: string] : IPlanets
-}
+export const pickData = [
+  "url",
+  "name",
+  "rotation_period",
+  "orbital_period",
+  "diameter",
+  "climate",
+  "gravity",
+  "terrain",
+  "surface_water",
+  "population"]

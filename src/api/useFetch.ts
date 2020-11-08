@@ -1,38 +1,31 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios';
-import _ from 'lodash';
 import { starWarsApi } from './api';
-import { IMovie, IPlanets, IStoredPlannets } from './api.types';
-import { AxiosInstance, AxiosRequestConfig } from 'axios';
-
-interface IAxios {
-  api: AxiosInstance,
-  method?: "get" | "post" | "put" | "delete",
-  url?: string,
-  data?: any,
-  config?: AxiosRequestConfig | null,
-}
+import { IMovie } from './api.types';
+import { setMoviesStore } from '../store/movies/movies.actions'
+import { useDispatch } from 'react-redux';
 
 export const useFetchMovies = () => {
+  const dispatch = useDispatch();
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-      try {
-        starWarsApi.get('/films')
-          .then(res => {
-            const moviesQuery = res.data.results.map(movie => ({
-              title: movie.title,
-              planets: movie.planets
-            }))
-            setMovies(moviesQuery);
-          })
-          .finally(() => setIsLoading(false))
-          .catch(err => setError(err.message))
-      } catch (err) {
-        setError(err.message)
-      }
+    try {
+      starWarsApi.get('/films')
+        .then(res => {
+          const moviesQuery = res.data.results.map(movie => ({
+            title: movie.title,
+            planetsUrl: movie.planets
+          }))
+          setMovies(moviesQuery);
+          dispatch(setMoviesStore(moviesQuery))
+        })
+        .finally(() => setIsLoading(false))
+        .catch(err => setError(err.message))
+    } catch (err) {
+      setError(err.message)
+    }
   }, [])
   return { isLoading, movies, error }
 }
