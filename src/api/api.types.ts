@@ -28,7 +28,6 @@ export const pickData = [
   "orbital_period",
   "diameter",
   "climate",
-  "gravity",
-  "terrain",
   "surface_water",
-  "population"]
+  "population"
+]

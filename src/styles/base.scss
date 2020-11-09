@@ -21,6 +21,11 @@ $border-input-focus: #000000;
      }
 }
 
+//custom
+@mixin rwd($screen) {
+  @media only screen and (max-width: $screen+'px') {@content};
+}
+
 @mixin customScrollBar {
   	&::-webkit-scrollbar-track {
     margin-left: 10px;

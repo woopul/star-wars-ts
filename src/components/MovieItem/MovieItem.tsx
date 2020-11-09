@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from '../Loader/Loader'
-import { IMovie } from '../../api/api.types'
+import MovieTable from '../MovieTable/MovieTable'
+import { IMovie, IPlanets } from '../../api/api.types'
 import usePlanetStore from '../../api/usePlanetStore';
 import { getSelectedPlanetsData } from '../../store/movies/movies.selectors';
 import styles from './MovieItem.module.scss';
@@ -13,15 +14,15 @@ interface IMovieItem {
 const MovieItem = ({ movie, isOpen }: IMovieItem) => {
   const { planetsUrl } = movie;
   const { isLoading, error } = usePlanetStore(planetsUrl)
-  const planetsDisplay = getSelectedPlanetsData(planetsUrl);
+  const planetsDataToDisplay : IPlanets[] = getSelectedPlanetsData(planetsUrl);
 
   return (
     <>
       {isLoading ?
         <Loader /> :
-        <div className="planets-table">
+        <div className={styles.MovieItemContainer}>
           {error && <div className={styles.error}></div>}
-          {planetsDisplay.map(planetData => <p>{planetData.name}</p>)}
+          <MovieTable rows={planetsDataToDisplay} />
         </div>
       }
     </>

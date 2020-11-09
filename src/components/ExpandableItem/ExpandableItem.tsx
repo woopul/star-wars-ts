@@ -1,5 +1,4 @@
 import React, { Children, ReactElement, useState } from 'react';
-import { IMovie } from '../../api/api.types'
 import { ReactComponent as ArrowClose } from '../../assets/icons/ARROW CLOSE.svg'
 import { ReactComponent as ArrowOpen } from '../../assets/icons/ARROW OPEN.svg'
 import styles from './ExpandableItem.module.scss';

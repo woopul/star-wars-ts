@@ -52,7 +52,6 @@ export const UpdatePlanetStore = (planetData: IPlanets[]): IUpdatePLanets => {
   // // eslint-disable-next-line react-hooks/rules-of-hooks
   // const storedUrls = _.pluck(storedPlanets, 'url')
   // planetData.map(p => { return storedUrls.includes(p.url) ? undefined : p });
-  console.log(planetData)
   return { type: MoviesActionType.UPDATE_PLANETS, payload: planetData }
 
 };

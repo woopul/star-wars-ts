@@ -1,0 +1,62 @@
+@import "../../styles/base.scss";
+
+#Container {
+	box-shadow: none;
+	border: none;
+	.table {
+		min-width: 650px;
+		td {
+			border-bottom: none;
+		}
+	}
+}
+
+#Container {
+	background-color: black;
+}
+
+.head {
+	th {
+		font-size: 0.8rem;
+		color: black;
+		&:first-child {
+			color: $color-primary;
+		}
+	}
+}
+
+.name {
+  color: $color-primary;
+  font-weight: 400;
+}
+
+.MobileMainTablesContainer {
+	display: flex;
+	flex-direction: column;
+
+	.MovieGrid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: repeat(7, 50px);
+		padding: 20px 10px 0 10px;
+		grid-template-areas:
+			"category value"
+			"category value"
+			"category value"
+			"category value"
+			"category value"
+			"category value"
+			"category value";
+
+		&:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		.category {
+			// grid-area: category;
+		}
+		.value {
+      // grid-area: value;
+		}
+	}
+}
