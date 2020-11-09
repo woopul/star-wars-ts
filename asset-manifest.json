@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ab90bded.chunk.css",
+    "main.js": "/static/js/main.d490c3f7.chunk.js",
+    "main.js.map": "/static/js/main.d490c3f7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.820f31b7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.820f31b7.js.map",
+    "static/js/2.21a57142.chunk.js": "/static/js/2.21a57142.chunk.js",
+    "static/js/2.21a57142.chunk.js.map": "/static/js/2.21a57142.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ab90bded.chunk.css.map": "/static/css/main.ab90bded.chunk.css.map",
+    "static/js/2.21a57142.chunk.js.LICENSE.txt": "/static/js/2.21a57142.chunk.js.LICENSE.txt",
+    "static/media/ARROW CLOSE.45c5a01b.svg": "/static/media/ARROW CLOSE.45c5a01b.svg",
+    "static/media/ARROW OPEN.89547e76.svg": "/static/media/ARROW OPEN.89547e76.svg",
+    "static/media/LOGO.f12a06d3.svg": "/static/media/LOGO.f12a06d3.svg",
+    "static/media/AddMovieForm.module.scss": "/static/media/SEARCH.469848d2.svg",
+    "static/media/loading.bffa8516.svg": "/static/media/loading.bffa8516.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.820f31b7.js",
+    "static/js/2.21a57142.chunk.js",
+    "static/css/main.ab90bded.chunk.css",
+    "static/js/main.d490c3f7.chunk.js"
+  ]
+}
