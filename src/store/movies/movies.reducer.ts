@@ -32,7 +32,6 @@ export const moviesReducer = (state: IMovieState = initialState, action: MoviesA
       }
 
     case MoviesActionType.ADD_PLANET: 
-    console.log("ADD ACTIO", action.payload)
       return {
         ...state,
         planets: [...state.planets, action.payload] 
