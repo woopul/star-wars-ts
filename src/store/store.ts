@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import { moviesReducer } from './movies/movies.reducer';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';

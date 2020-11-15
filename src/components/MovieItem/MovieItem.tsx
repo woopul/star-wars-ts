@@ -3,7 +3,7 @@ import Loader from '../Loader/Loader'
 import MovieTable from '../MovieTable/MovieTable'
 import { IMovie, IPlanets } from '../../api/api.types'
 import usePlanetStore from '../../api/usePlanetStore';
-import { getSelectedPlanetsData } from '../../store/movies/movies.selectors';
+import { usePlanetsDataToDisplay } from '../../store/movies/movies.selectors';
 import styles from './MovieItem.module.scss';
 
 interface IMovieItem {
@@ -14,7 +14,7 @@ interface IMovieItem {
 const MovieItem = ({ movie, isOpen }: IMovieItem) => {
   const { planetsUrl } = movie;
   const { isLoading, error } = usePlanetStore(planetsUrl)
-  const planetsDataToDisplay : IPlanets[] = getSelectedPlanetsData(planetsUrl);
+  const planetsDataToDisplay : IPlanets[] = usePlanetsDataToDisplay(planetsUrl);
 
   return (
     <>

@@ -1,6 +1,6 @@
-import React, { Children, ReactElement, useState } from 'react';
-import { ReactComponent as ArrowClose } from '../../assets/icons/ARROW CLOSE.svg'
-import { ReactComponent as ArrowOpen } from '../../assets/icons/ARROW OPEN.svg'
+import React, { ReactElement, useState } from 'react';
+import { ReactComponent as ArrowClose } from '../../assets/icons/ARROW_CLOSE.svg'
+import { ReactComponent as ArrowOpen } from '../../assets/icons/ARROW_OPEN.svg'
 import styles from './ExpandableItem.module.scss';
 
 interface IExpandableElement {

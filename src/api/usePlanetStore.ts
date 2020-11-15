@@ -6,7 +6,7 @@ import { IPlanets, pickData } from './api.types';
 import { dispatch } from '../store/store';
 
 const getCashedPlanets = () => {
-  const cashedPlanets: IPlanets[] = JSON.parse(localStorage.getItem('planets')) || [];
+  const cashedPlanets: IPlanets[] = JSON.parse(window.localStorage.getItem('planets')) || [];
   dispatch()(setPlanetStore(_.values(cashedPlanets)));
   return cashedPlanets;
 }
@@ -18,16 +18,18 @@ export const usePlanetStore = (urls?: string[]) => {
 
   useEffect(() => {
     fetchPlanets();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-      !isLoading && localStorage.setItem('planets', JSON.stringify(cashed));
-  }, [isLoading]);
-
+      !isLoading && window.localStorage.setItem('planets', JSON.stringify(cashed));
+  }, [isLoading]); // eslint-disable-line react-hooks/exhaustive-deps
+  
   const fetchPlanets = async () => {
     for (const url of urls) {
       if (!_.map(cashed, 'url').includes(url)) {
-        const fetchedData = await axios.get(url).then(res => res.data).catch(err => setError(err.message));
+        const urlHttps = url.includes('https') ? url : url.replace('http', "https");
+        
+        const fetchedData = await axios.get(urlHttps).then(res => res.data).catch(err => setError(err.message));
         const planetDataToStore = _.pick(fetchedData, pickData);
 
         setChashedPlanets(prevState => ([...prevState, planetDataToStore]));

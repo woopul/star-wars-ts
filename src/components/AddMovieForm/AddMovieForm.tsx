@@ -17,10 +17,6 @@ interface IFormControl {
 	addPlanet?: string | boolean
 }
 
-interface ISelectedPlanets {
-	planetData: IPlanets[]
-}
-
 const AddMovieForm = () => {
 	const [formData, setFormData] = useState<IFormData>({
 		movieTitle: "",
@@ -40,8 +36,15 @@ const AddMovieForm = () => {
 
 		if (!values.movieTitle) {
 			nextErrors.movieTitle = "Field is required";
-		} else if (!/^[A-Z]/.test(values.movieTitle)) {
-			nextErrors.movieTitle = "Movie title name must start with a capital letter."
+		} else {
+			if (!/^[A-Z]/.test(values.movieTitle)){
+				nextErrors.movieTitle = "Movie title name must start with capital letter"
+			}
+			if (values.movieTitle.length < 3) {
+				nextErrors.movieTitle = nextErrors.movieTitle ?
+				`${nextErrors.movieTitle} | title must be at least three letters long`:
+				"Title must be at least three letters long"
+			}
 		}
 
 		setErrors(nextErrors);
@@ -81,25 +84,22 @@ const AddMovieForm = () => {
 		});
 	};
 
-	const addCustomMovie = () => {
-	}
-	
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (selectedPlanets.length === 0) {
-			setErrors({ ...errors, ["addPlanet"]: "At Least One planet needs to be selected" });
+			setErrors({ ...errors, "addPlanet": "At Least One planet needs to be selected" });
 			return
 		}
 		clearForm();
-		dispatch()(postMovie({title: formData.movieTitle, planetsUrl: selectedPlanets.map(p => p.url)}))
+		dispatch()(postMovie({ title: formData.movieTitle, planetsUrl: selectedPlanets.map(p => p.url) }))
 		dispatch()(UpdatePlanetStore([]))
-		
+
 	};
 
 	const handleSelectPlanet = (res) => {
 		setAutocompleteFetch([])
-		if (_.some(selectedPlanets, {name: res.name})) return;
-		setSelectedPlanets([...selectedPlanets,  _.pick(res, pickData)]);
+		if (_.some(selectedPlanets, { name: res.name })) return;
+		setSelectedPlanets([...selectedPlanets, _.pick(res, pickData)]);
 	}
 
 	const handleRemovePlanet = name => {
@@ -140,7 +140,7 @@ const AddMovieForm = () => {
 						/>
 						{autocompleteFetch.length > 0 &&
 							<div className={styles.hints}>
-								{autocompleteFetch.map(res => res.name === 'unknown'? null :  <p onClick={() => handleSelectPlanet(res)}>{res.name}</p>)}
+								{autocompleteFetch.map(res => res.name === 'unknown' ? null : <p onClick={() => handleSelectPlanet(res)}>{res.name}</p>)}
 							</div>}
 					</label>
 					{errors["addPlanet"] && (<p className={styles.errorMsg}>{errors["addPlanet"]}</p>)}

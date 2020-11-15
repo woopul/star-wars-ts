@@ -1,4 +1,3 @@
-import { IPlanets } from './../../api/api.types';
 import { IMovieState } from './../store.types';
 import { MoviesAction, MoviesActionType } from './movies.actions';
 
@@ -24,8 +23,6 @@ export const moviesReducer = (state: IMovieState = initialState, action: MoviesA
       }
 
     case MoviesActionType.SET_PLANETS: 
-      // const newPlanetState: IPlanets[];
-      // const action.payload.forEach(newPlanet =>{if(state.planets.filter(stored => stored.url === if newPlanet.url).length>0) )
       return {
         ...state,
         planets: [...action.payload] 

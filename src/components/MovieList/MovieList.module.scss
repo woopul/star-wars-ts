@@ -21,4 +21,9 @@
 		display: flex;
 		flex-direction: column;
 	}
+
+	.error {
+		color:red;
+		align-self: center;
+	}
 }

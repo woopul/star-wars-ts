@@ -12,7 +12,7 @@ export const useFetchMovies = () => {
 
   useEffect(() => {
     try {
-      starWarsApi.get('/films')
+      starWarsApi.get('/films/')
         .then(res => {
           const moviesQuery = res.data.results.map(movie => ({
             title: movie.title,
@@ -26,6 +26,7 @@ export const useFetchMovies = () => {
     } catch (err) {
       setError(err.message)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return { isLoading, movies, error }
 }

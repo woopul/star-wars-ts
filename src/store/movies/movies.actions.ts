@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { IMovie, IPlanets } from './../../api/api.types';
 
 
@@ -47,11 +46,5 @@ export const setPlanetStore = (planetsData: IPlanets[]): ISetPlanetsAction => ({
 export const addPlanetStore = (planetData: IPlanets): IAddPlanetAction => ({ type: MoviesActionType.ADD_PLANET, payload: planetData });
 
 export const UpdatePlanetStore = (planetData: IPlanets[]): IUpdatePLanets => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const storedPlanets = useSelector(state => state.planets)
-  // // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const storedUrls = _.pluck(storedPlanets, 'url')
-  // planetData.map(p => { return storedUrls.includes(p.url) ? undefined : p });
   return { type: MoviesActionType.UPDATE_PLANETS, payload: planetData }
-
 };

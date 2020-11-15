@@ -11,8 +11,7 @@ export const getPlanetData = (planet: string) : IPlanets => {
   return getPlanets()[planet]
 }
 
-export const getSelectedPlanetsData = (planetsUrl: string[]) : IPlanets[] => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+export const usePlanetsDataToDisplay = (planetsUrl: string[]) : IPlanets[] => {
   const storedPlanets = useSelector(state => state.planets);
   return planetsUrl.map(url => _.find(storedPlanets, ['url', url]))
 }

@@ -52,10 +52,10 @@ const MovieTable = ({ rows }: IMovieTable) => {
       <div key='moblieTable' className={styles.MobileMainTablesContainer}>
         {mobileTableMap.map(row => (
           <div key={row[0]} className={styles.MovieGrid}>
-            {row.map((value, i) => (<>
+            {row.map((value, i) => (<React.Fragment key={value}>
               <div className={styles.category}>{headers[i]}</div>
               <div className={`${styles.value} ${i===0 && styles.name}`}>{value}</div>
-            </>))
+            </React.Fragment>))
             }
           </div>
         ))}
@@ -68,7 +68,7 @@ const MovieTable = ({ rows }: IMovieTable) => {
       <Table size='small' className={classes.table} aria-label="simple table">
         <TableHead className={classes.head}>
           <TableRow>
-            {headers.map(header => <TableCell>{header}</TableCell>)}
+            {headers.map((header, i) => <TableCell key={`${i}_${header}`}>{header}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody>
