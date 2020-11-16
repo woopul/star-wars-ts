@@ -1,6 +1,5 @@
 import { IMovie, IPlanets } from './../../api/api.types';
 
-
 export enum MoviesActionType {
   SET_MOVIES = "SET_MOVIES",
   POST_MOVIE = "POST_MOVIES",
@@ -8,7 +7,6 @@ export enum MoviesActionType {
   ADD_PLANET = "ADD_PLANET",
   UPDATE_PLANETS = "UPDATE_PLANETS"
 }
-
 
 export interface ISetMoviesAction {
   type: MoviesActionType.SET_MOVIES,

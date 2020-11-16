@@ -29,11 +29,15 @@ export const usePlanetStore = (urls?: string[]) => {
       if (!_.map(cashed, 'url').includes(url)) {
         const urlHttps = url.includes('https') ? url : url.replace('http', "https");
         
-        const fetchedData = await axios.get(urlHttps).then(res => res.data).catch(err => setError(err.message));
-        const planetDataToStore = _.pick(fetchedData, pickData);
-
-        setChashedPlanets(prevState => ([...prevState, planetDataToStore]));
-        dispatch()(addPlanetStore(planetDataToStore));
+        try {
+          const response = await axios.get(urlHttps);
+          const planetDataToStore = _.pick(response.data, pickData);
+          
+          setChashedPlanets(prevState => ([...prevState, planetDataToStore]));
+          dispatch()(addPlanetStore(planetDataToStore));
+        } catch(err) {
+          setError(err);
+        }
 
       } else console.log('%c IN STORE! ', 'background: #222; color: #bada55');
     }

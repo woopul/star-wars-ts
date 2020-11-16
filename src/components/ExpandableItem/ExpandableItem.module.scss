@@ -15,6 +15,10 @@
 		background: #fff;
 		border-radius: 5px;
 
+		&:hover {
+			cursor: pointer;
+		}
+		
 		&__text {
 			font-weight: 700;
 		}
