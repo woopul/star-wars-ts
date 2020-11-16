@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/star-wars-ts/static/css/main.a59e84b6.chunk.css",
-    "main.js": "/star-wars-ts/static/js/main.7e063f1f.chunk.js",
-    "main.js.map": "/star-wars-ts/static/js/main.7e063f1f.chunk.js.map",
+    "main.css": "/star-wars-ts/static/css/main.88336897.chunk.css",
+    "main.js": "/star-wars-ts/static/js/main.2eaba665.chunk.js",
+    "main.js.map": "/star-wars-ts/static/js/main.2eaba665.chunk.js.map",
     "runtime-main.js": "/star-wars-ts/static/js/runtime-main.b77d6f1f.js",
     "runtime-main.js.map": "/star-wars-ts/static/js/runtime-main.b77d6f1f.js.map",
-    "static/js/2.59bace22.chunk.js": "/star-wars-ts/static/js/2.59bace22.chunk.js",
-    "static/js/2.59bace22.chunk.js.map": "/star-wars-ts/static/js/2.59bace22.chunk.js.map",
+    "static/js/2.028c976f.chunk.js": "/star-wars-ts/static/js/2.028c976f.chunk.js",
+    "static/js/2.028c976f.chunk.js.map": "/star-wars-ts/static/js/2.028c976f.chunk.js.map",
     "index.html": "/star-wars-ts/index.html",
-    "static/css/main.a59e84b6.chunk.css.map": "/star-wars-ts/static/css/main.a59e84b6.chunk.css.map",
-    "static/js/2.59bace22.chunk.js.LICENSE.txt": "/star-wars-ts/static/js/2.59bace22.chunk.js.LICENSE.txt",
+    "static/css/main.88336897.chunk.css.map": "/star-wars-ts/static/css/main.88336897.chunk.css.map",
+    "static/js/2.028c976f.chunk.js.LICENSE.txt": "/star-wars-ts/static/js/2.028c976f.chunk.js.LICENSE.txt",
     "static/media/ARROW_CLOSE.bcc0d8d8.svg": "/star-wars-ts/static/media/ARROW_CLOSE.bcc0d8d8.svg",
     "static/media/ARROW_OPEN.d3529968.svg": "/star-wars-ts/static/media/ARROW_OPEN.d3529968.svg",
     "static/media/LOGO.f12a06d3.svg": "/star-wars-ts/static/media/LOGO.f12a06d3.svg",
@@ -18,8 +18,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b77d6f1f.js",
-    "static/js/2.59bace22.chunk.js",
-    "static/css/main.a59e84b6.chunk.css",
-    "static/js/main.7e063f1f.chunk.js"
+    "static/js/2.028c976f.chunk.js",
+    "static/css/main.88336897.chunk.css",
+    "static/js/main.2eaba665.chunk.js"
   ]
 }
